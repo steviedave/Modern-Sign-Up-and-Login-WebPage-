@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Gotu&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap');
+
+:root {
+  --accent-color: #8672ff;
+  --accent-color-hover: #765efc;
+  --base-color: white;
+  --text-color: #2e2b41;
+  --input-color: #F3F0FF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+html {
+  font-family: Poppins, Segoe UI, sans-serif;
+  font-size: 12pt;
+  color: var(--text-color);
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url(background.jpg);
+  background-size: cover; /*this shows the entire image*/
+  background-position: right; /*places image to the right of the body*/
+  overflow: hidden; /* to ensure this is not a scrollable page*/
+}
+
+.wrapper {
+  box-sizing: border-box; 
+  /*This means that all borders and paddings will be created inwards, 
+  hence it won't affect the total width and height of the element*/
+  background-color: var(--base-color);
+  height: 100vh;
+  width: max(40%, 600px);
+  /*This function returns the maximum value of the two specified for the width.
+  In laptop screens 40% vw is greater than 600px hence it returns 40% vw.
+  In tablets and phone screens 600px is usually greater than 40% vw hence this value is 
+  returned.*/
+  padding: 10px;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+form {
+  width: min(400px, 100%); 
+  /*This min function always returs the smaller of the two, 
+  in laptops 400px is smaller than 100% vw so the function returs 400px. in phones 
+  100% vw is smaller than 400px so the function returns 100% vw.*/
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+form label {
+  flex-shrink: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--accent-color);
+  fill: var(--base-color);
+  color: var(--base-color);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+} 
+
+form input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1em;
+  font: inherit;
+  /* An oop function in css that allows us to inherit
+  all settings from the parent class*/
+  border-radius: 0 10px 10px 0;
+  border: 2px solid var(--input-color);
+  border-left: none;
+  background-color: var(--input-color);
+  transition: 150ms ease;
+}
+
+form input:hover {
+  border-color: var(--accent-color);
+}
+
+form input:focus {
+  border-color: var(--accent-color);
+}
+/*The focus pseudo-class allows as to apply stylings
+to input elements while they are active.*/
+
+form input::placeholder {
+  color: var(--text-color);
+}
+
+form button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: 0.85em 4em;
+  /*em is a unit that refers to the font size of the element.
+  0.85 em means 85% of the elements font size*/
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 150ms ease-in-out;
+}
+
+form button:hover {
+  background-color: var(--accent-color-hover);
+}
+
+form button:focus {
+  background-color: var(--accent-color-hover);
+}
+
+a {
+  text-decoration: none; 
+  /*this removes the bluish color most 
+  browsers place on the anchor element*/
+  color: var(--accent-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*responsive design using media querries*/
+@media(max-width: 450px) {
+  .wrapper {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #form {
+    width: 70%;
+  }
+}
+
+@media(max-width: 1100px) {
+  .wrapper {
+    width: min(600px, 100%);
+  }
+
+  body {
+    overflow: hidden;
+  }
+}
+
+.incorrect label {
+  background-color: #f06272;
+}
+
+form div.incorrect input {
+  border-color: #f06272;
+}
+
+#error-message {
+  color: #f06272;
+}
